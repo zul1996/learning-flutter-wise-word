@@ -56,8 +56,7 @@ class History extends StatelessWidget {
                       ..showSnackBar(
                         SnackBar(
                           content: Text(
-                            "It's word ${wordPair.asCamelCase}",
-                          ),
+                              'its word: ${wordPair.asCamelCase}, e.g., word brightskill, show "it`s brightskill!"'),
                         ),
                       );
                   },

@@ -30,6 +30,7 @@ class MyAppState extends ChangeNotifier {
 
   void deleteAllHistory() {
     favoriteHistory.clear();
+    favorites.clear();
     notifyListeners();
   }
 }

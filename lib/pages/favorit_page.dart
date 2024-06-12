@@ -12,14 +12,14 @@ class FavoritePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorite Words'),
+        title: const Text('Kata-kata Favorit'),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
             Text(
-              "You have ${appState.favorites.length} favorite words:",
+              "Anda memiliki ${appState.favorites.length} kata favorit:",
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
@@ -39,7 +39,7 @@ class FavoritePage extends StatelessWidget {
                         ..showSnackBar(
                           SnackBar(
                             content:
-                                Text('Deleted word: ${wordPair.asCamelCase}'),
+                                Text('Kata dihapus: ${wordPair.asCamelCase}'),
                           ),
                         );
                     },
@@ -49,8 +49,8 @@ class FavoritePage extends StatelessWidget {
                       ..hideCurrentSnackBar()
                       ..showSnackBar(
                         SnackBar(
-                          content:
-                              Text('Selected word: ${wordPair.asCamelCase}'),
+                          content: Text(
+                              'its word: ${wordPair.asCamelCase}, e.g., word brightskill, show "it`s brightskill!"'),
                         ),
                       );
                   },

@@ -1,6 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:english_words/english_words.dart';
+
 import 'controller/app_state.dart';
 import 'pages/favorit_page.dart';
 import 'pages/history.dart';
@@ -148,7 +150,10 @@ class GeneratorPage extends StatelessWidget {
 }
 
 class BigCards extends StatelessWidget {
-  const BigCards({super.key, required this.pair});
+  const BigCards({
+    super.key,
+    required this.pair,
+  });
 
   final WordPair pair;
 
@@ -156,18 +161,18 @@ class BigCards extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final style = theme.textTheme.displayMedium!.copyWith(
-      color: theme.colorScheme.onPrimary,
-      fontSize: 30.0,
-    );
-
     return Card(
       color: Colors.amber,
       child: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Text(
           pair.asLowerCase,
-          style: style,
+          style: TextStyle(
+            color: theme.colorScheme.onPrimary,
+            fontSize: 30.0,
+            fontWeight: FontWeight.normal, // Sesuaikan dengan kebutuhan Anda
+            fontStyle: FontStyle.normal, // Sesuaikan dengan kebutuhan Anda
+          ),
         ),
       ),
     );
