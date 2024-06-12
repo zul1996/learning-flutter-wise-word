@@ -61,28 +61,44 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MyApp'),
+        backgroundColor: Colors.amber, // Warna latar belakang appbar
+        title: const Text(
+          'MyApp',
+          style: TextStyle(
+            fontSize: 20, // Ukuran teks judul
+            fontWeight: FontWeight.bold, // Ketebalan teks judul
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              // Tindakan yang akan dijalankan saat tombol pencarian ditekan
+            },
+            icon: const Icon(Icons.search), // Icon untuk tombol pencarian
+          ),
+        ],
       ),
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (value) {
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor:
+            Colors.amber, // Warna latar belakang bottom navigation bar
+        selectedItemColor: Colors.black, // Warna teks item yang dipilih
+        unselectedItemColor: Colors.grey, // Warna teks item yang tidak dipilih
+        onTap: (value) {
           setState(() {
             selectedIndex = value;
           });
         },
-        selectedIndex: selectedIndex,
-        destinations: const [
-          NavigationDestination(
-            selectedIcon: Icon(Icons.home),
+        currentIndex: selectedIndex,
+        items: const [
+          BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.favorite),
+          BottomNavigationBarItem(
             icon: Icon(Icons.favorite_border_outlined),
             label: 'Favorites',
           ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.history),
+          BottomNavigationBarItem(
             icon: Icon(Icons.history_outlined),
             label: 'History',
           ),
@@ -112,7 +128,14 @@ class GeneratorPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("My random Idea:"),
+          const Text(
+            "My random Idea:",
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.normal,
+              fontStyle: FontStyle.normal,
+            ),
+          ),
           BigCards(pair: pair),
           const SizedBox(height: 10),
           const SizedBox(height: 16),
@@ -125,10 +148,16 @@ class GeneratorPage extends StatelessWidget {
                   ScaffoldMessenger.of(context)
                     ..hideCurrentSnackBar()
                     ..showSnackBar(SnackBar(
-                      content: Text(appState.favorites
-                              .contains(appState.current)
-                          ? 'Ditambahkan ke Favorit: ${appState.current.asPascalCase}'
-                          : 'Dihapus dari Favorit: ${appState.current.asPascalCase}'),
+                      backgroundColor: Colors.amber[200],
+                      content: Text(
+                        appState.favorites.contains(appState.current)
+                            ? 'Ditambahkan ke Favorit: ${appState.current.asPascalCase}'
+                            : 'Dihapus dari Favorit: ${appState.current.asPascalCase}',
+                        style: TextStyle(
+                          color: Colors
+                              .black, // Warna teks diubah menjadi hitam untuk memberikan kontras yang lebih baik
+                        ),
+                      ),
                     ));
                 },
                 icon: Icon(icon),
@@ -170,8 +199,8 @@ class BigCards extends StatelessWidget {
           style: TextStyle(
             color: theme.colorScheme.onPrimary,
             fontSize: 30.0,
-            fontWeight: FontWeight.normal, // Sesuaikan dengan kebutuhan Anda
-            fontStyle: FontStyle.normal, // Sesuaikan dengan kebutuhan Anda
+            fontWeight: FontWeight.normal,
+            fontStyle: FontStyle.normal,
           ),
         ),
       ),
